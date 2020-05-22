@@ -641,6 +641,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128150204}
   m_CullTransparentMesh: 0
+--- !u!1 &146040728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146040729}
+  m_Layer: 0
+  m_Name: DropLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146040729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146040728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165126441
 GameObject:
   m_ObjectHideFlags: 0
@@ -10280,7 +10310,7 @@ GameObject:
   - component: {fileID: 1170105973}
   - component: {fileID: 1170105976}
   - component: {fileID: 1170105977}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ninjin
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10301,6 +10331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   swingtime: 0
+  dir: 0
   anim: {fileID: 1170105973}
 --- !u!212 &1170105970
 SpriteRenderer:
@@ -10417,6 +10448,7 @@ MonoBehaviour:
   Tree: {fileID: 3221080413261677907, guid: ac5ebda9dc04f0146adf6cfb072b8531, type: 3}
   Door: {fileID: 3829622336737346591, guid: b3516507cbac4d741b25884836c9d12b, type: 3}
   Fence: {fileID: 3694636199819671503, guid: 72cad693c7afbd04c9c73cf1810bd5a2, type: 3}
+  Drop: {fileID: 3344932177064482652, guid: 713ef8c1c6efea049a887a450f937a5a, type: 3}
   UISUTS: {fileID: 1394304519}
   Papyrus: {fileID: 282668943}
   GhostSlot: {fileID: 669421558}

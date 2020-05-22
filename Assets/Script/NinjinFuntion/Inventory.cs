@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public GameObject BlockPointer, BlockPar,o;
-    public GameObject Block, Tree, Door, Fence;
+    public GameObject Block, Tree, Door, Fence,Drop;
     public UISUTS UISUTS;
     public Image Papyrus, GhostSlot, InvBar;
     public Image[] Slots, CraftSlots, AD1, AD2 /*Aspect Diagonal*/;
@@ -65,6 +65,19 @@ public class Inventory : MonoBehaviour
             }
         }
         else Debug.Log("Error");
+    }
+    public void Droppr()
+    {
+        if((int)Item[InvSelected].y>0)
+        {
+            o = Instantiate(Drop);
+            Vector3 t = transform.position;
+            t.x += (GetComponent<Movement>().dir==0)?2: (GetComponent<Movement>().dir == 1) ? -2 : 0;
+            t.y += (GetComponent<Movement>().dir == 2) ? 2 : (GetComponent<Movement>().dir==3)?-2:0;
+            o.transform.position = t;
+            o.GetComponent<Thing>().TheThing = (int)Item[InvSelected].x;
+            Item[InvSelected].y -= 1;
+        }
     }
     public void Ghosttr()
     {
@@ -587,6 +600,8 @@ public class Inventory : MonoBehaviour
         InvThing = (int)Item[InvSelected].x;
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(2))
             Clicked = false;
+        if (Input.GetKeyDown("q"))
+            Droppr();
         if (Item[InvSelected].y > 0 && (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1)) && !PapyrusOpen)
             Placer(Input.GetMouseButtonDown(1), true, BlockPointer.transform.position, (int)Item[InvSelected].x, 0, 0);
         if (Input.GetAxisRaw("Scroll") != 0)

@@ -14,6 +14,10 @@ public class Thing : MonoBehaviour
         {
             par = GameObject.Find("Plants");
         }
+        else if (GetComponent<Drop>() as Drop != null)
+        {
+            par = GameObject.Find("DropLoc");
+        }
         else
         {
             par = GameObject.Find("BlockLocation");

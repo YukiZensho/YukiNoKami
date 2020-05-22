@@ -9,7 +9,7 @@ public class UISUTS : MonoBehaviour
     public BlockPointer BlockPointer;
     public Text FrameRate,position,blockCount,plantCount,Hovers,HovPos,MousePos;
 
-    public bool TextingBox,MainTextOpen,paused,advanced;
+    public bool TextingBox,MainTextOpen,paused,advanced,DropRotationg;
     public float LastFrame, framerate;
     public int treez;
     public void PrePlanter()

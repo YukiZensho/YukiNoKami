@@ -157,7 +157,7 @@ public class Cheats : MonoBehaviour
                 }
                 if (t2 == "camsize" || t2 == "√2")
                 {
-                    if (t3 == "?" || t3 == "value")
+                    if (t3 == "?" || t3 == "value"||t3 =="")
                         u.position.text = "camsize = " + Camera.orthographicSize;
                     else
                     {
@@ -166,6 +166,24 @@ public class Cheats : MonoBehaviour
                         else Camera.orthographicSize = float.Parse(t3) % 15.0001f;
                         u.position.text = "camsize = " + Camera.orthographicSize;
                     }
+                }
+                if (t2 == "DropRot" || t2 == "√3")
+                {
+                    if (t3 == "?" || t3 == "value"|| t3=="")
+                        u.position.text = "DropRot " + u.DropRotationg;
+                    if (t3 == "1" || t3 == "true")
+                    {
+                        u.DropRotationg = true;
+                    }
+                    if (t3 == "0" || t3 == "false")
+                    {
+                        u.DropRotationg = false;
+                    }
+                    if (t3 == "!")
+                    {
+                        u.DropRotationg = !u.DropRotationg;
+                    }
+                    u.position.text = "DropRot " + u.DropRotationg;
                 }
                 else
                 {

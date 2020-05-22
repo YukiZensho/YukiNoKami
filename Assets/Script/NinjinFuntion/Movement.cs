@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed,swingtime;
+    public int dir;// > 0        < 1      /\ 2     \/ 3
     public Animator anim;
     void Update()
     {
@@ -32,6 +33,7 @@ public class Movement : MonoBehaviour
                 swingtime = 21;
                 gameObject.GetComponent<Health>().SP -= 0.01f;
             }
+            dir = (Input.GetAxis("Xx") > .1f) ?0:(Input.GetAxis("Xx") < -.1f) ?1:(Input.GetAxis("Yy") > .1f) ?2:(Input.GetAxis("Yy") < -.1f) ?3:dir;
         }
     }
 }

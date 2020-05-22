@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class ChunkSaveRead : MonoBehaviour
@@ -246,11 +247,14 @@ public class ChunkSaveRead : MonoBehaviour
             //BlockPlacement
             {
                 Inventory inv = ninjin.GetComponent<Inventory>();
-                string text = fileR.ReadLine();
+                string text = fileR.ReadLine(),line,old="";
                 string q = text.Split(new char[] { ' ' })[0];
                 for (int i = 0; i < int.Parse(q); i++)
                 {
-                    string line = fileR.ReadLine();
+                    line = fileR.ReadLine();
+                    if (old == line)
+                        continue;
+                    old = line;
                     //Debug.Log(line);
                     string t = line.Split(new char[] { ' ' })[0];
                     string x = line.Split(new char[] { ' ' })[1];
@@ -306,6 +310,20 @@ public class ChunkSaveRead : MonoBehaviour
             //Blocks
             for (int i = 0; i < BlockFather.transform.childCount; i++)
             {
+                if (false)
+                {
+                    StreamReader fileR = new StreamReader(Path.Combine(docPath, X + " " + Y));
+                    string t="";
+                    StreamReader r = new StreamReader("file_path");
+                    while (r.EndOfStream == false)
+                    {
+                        t = r.ReadLine();
+                    }
+                    Debug.Log((float.Parse(t.Split(new char[] { ' ' })[1]) - BlockFather.transform.GetChild(i).transform.position.x) + " " + (float.Parse(t.Split(new char[] { ' ' })[2]) - BlockFather.transform.GetChild(i).transform.position.y));
+                    if (float.Parse(t.Split(new char[] { ' ' })[1]) == BlockFather.transform.GetChild(i).transform.position.x && float.Parse(t.Split(new char[] { ' ' })[2]) == BlockFather.transform.GetChild(i).transform.position.y)
+                        continue;
+
+                }
                 if (BlockFather.transform.GetChild(i).transform.position.x > X * PageSize && BlockFather.transform.GetChild(i).transform.position.x <= (X * PageSize)+PageSize)
                     if (BlockFather.transform.GetChild(i).transform.position.y > Y * PageSize && BlockFather.transform.GetChild(i).transform.position.y <= (Y * PageSize) + PageSize)
                     {
@@ -332,6 +350,18 @@ public class ChunkSaveRead : MonoBehaviour
             fileW.Write(q + "\n");
             for (int i = 0; i < PlantFather.transform.childCount; i++)
             {
+                if (false) {
+                    StreamReader fileR = new StreamReader(Path.Combine(docPath, X + " " + Y));
+                    string t = "";
+                    StreamReader r = new StreamReader("file_path");
+                    while (r.EndOfStream == false)
+                    {
+                        t = r.ReadLine();
+                    }
+                    Debug.Log((float.Parse(t.Split(new char[] { ' ' })[1]) - BlockFather.transform.GetChild(i).transform.position.x) + " " + (float.Parse(t.Split(new char[] { ' ' })[2]) - BlockFather.transform.GetChild(i).transform.position.y));
+                    if (float.Parse(t.Split(new char[] { ' ' })[1]) == BlockFather.transform.GetChild(i).transform.position.x && float.Parse(t.Split(new char[] { ' ' })[2]) == BlockFather.transform.GetChild(i).transform.position.y)
+                        continue;
+                }
                 if (PlantFather.transform.GetChild(i).transform.position.x > X * PageSize && PlantFather.transform.GetChild(i).transform.position.x <= (X * PageSize) + PageSize)
                     if (PlantFather.transform.GetChild(i).transform.position.y > Y * PageSize && PlantFather.transform.GetChild(i).transform.position.y <= (Y * PageSize) + PageSize)
                     {
